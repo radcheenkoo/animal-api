@@ -1,4 +1,4 @@
-package org.animal_api.db.entities;
+package org.animal_api.interfaces;
 
 public interface IFood {
 

@@ -3,13 +3,14 @@ package org.animal_api.db.entities;
 
 import jakarta.persistence.*;
 import lombok.extern.slf4j.Slf4j;
+import org.animal_api.interfaces.IFood;
 
 import java.util.Date;
 
 @Slf4j
 @Entity
 @Table(name = "goats")
-public class GoatsEntity extends Animal implements IFood{
+public class GoatsEntity extends AnimalEntity implements IFood {
 
 
     @ManyToOne(fetch = FetchType.LAZY)

@@ -3,12 +3,13 @@ package org.animal_api.db.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.animal_api.interfaces.IFood;
 
 import java.util.Date;
 
 @Data
 @MappedSuperclass
-public abstract class Animal {
+public abstract class AnimalEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -23,15 +24,15 @@ public abstract class Animal {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_modification_date", nullable = false)
-    protected Date LastModificationDate;
+    protected Date lastModificationDate;
 
-    public Animal(String name, Date creatingDate, Date lastModificationDate) {
+    public AnimalEntity(String name, Date creatingDate, Date lastModificationDate) {
         this.name = name;
         this.creatingDate = creatingDate;
-        LastModificationDate = lastModificationDate;
+        this.lastModificationDate = lastModificationDate;
     }
 
-    public Animal() {
+    public AnimalEntity() {
     }
 
     public abstract void eatInternal(IFood food);

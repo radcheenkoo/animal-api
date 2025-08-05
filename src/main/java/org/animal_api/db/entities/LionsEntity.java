@@ -3,13 +3,14 @@ package org.animal_api.db.entities;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 import lombok.extern.slf4j.Slf4j;
+import org.animal_api.interfaces.IFood;
 
 import java.util.Date;
 
 @Entity
 @Table(name = "lions")
 @Slf4j
-public class LionsEntity extends Animal{
+public class LionsEntity extends AnimalEntity {
 
 
     public LionsEntity(){
