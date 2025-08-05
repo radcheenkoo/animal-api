@@ -8,19 +8,19 @@ import org.mapstruct.Mapping;
 @Mapper(componentModel = "spring")
 public interface CowsMapper extends AnimalMapper<CowsEntity, CowsDto>{
 
-    @Mapping(source = "id", target = "id")
-    @Mapping(source = "name", target = "name")
-    @Mapping(source = "creatingDate", target = "creatingDate")
-    @Mapping(source = "lastModificationDate", target = "lastModificationDate")
-    @Mapping(source = "lion", target = "lion")
+//    @Mapping(source = "id", target = "id")
+//    @Mapping(source = "name", target = "name")
+//    @Mapping(source = "creatingDate", target = "creatingDate")
+//    @Mapping(source = "lastModificationDate", target = "lastModificationDate")
+//    @Mapping(source = "lion", target = "lion")
     @Override
     CowsDto entityToDto(CowsEntity entity);
 
-    @Mapping(source = "id", target = "id")
-    @Mapping(source = "name", target = "name")
-    @Mapping(source = "creatingDate", target = "creatingDate")
-    @Mapping(source = "lastModificationDate", target = "lastModificationDate")
-    @Mapping(source = "lion", target = "lion")
+//    @Mapping(source = "id", target = "id")
+//    @Mapping(source = "name", target = "name")
+//    @Mapping(source = "creatingDate", target = "creatingDate")
+//    @Mapping(source = "lastModificationDate", target = "lastModificationDate")
+//    @Mapping(source = "lion", target = "lion")
     @Override
     CowsEntity dtoToEntity(CowsDto dto);
 

@@ -10,18 +10,18 @@ import org.mapstruct.Mapping;
 public interface GrassMapper extends PlantMapper<GrassEntity, GrassDto> {
 
 
-    @Mapping(source = "id", target = "id")
-    @Mapping(source = "creatingDate", target = "creatingDate")
-    @Mapping(source = "cow", target = "cow")
-    @Mapping(source = "goat", target = "goat")
+//    @Mapping(source = "id", target = "id")
+//    @Mapping(source = "creatingDate", target = "creatingDate")
+//    @Mapping(source = "cow", target = "cow")
+//    @Mapping(source = "goat", target = "goat")
     @Override
     GrassDto entityToDto(GrassEntity entity);
 
 
-    @Mapping(source = "id", target = "id")
-    @Mapping(source = "creatingDate", target = "creatingDate")
-    @Mapping(source = "cow", target = "cow")
-    @Mapping(source = "goat", target = "goat")
+//    @Mapping(source = "id", target = "id")
+//    @Mapping(source = "creatingDate", target = "creatingDate")
+//    @Mapping(source = "cow", target = "cow")
+//    @Mapping(source = "goat", target = "goat")
     @Override
     GrassEntity dtoToEntity(GrassDto dto);
 

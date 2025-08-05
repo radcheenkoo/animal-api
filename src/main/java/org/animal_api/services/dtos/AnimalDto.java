@@ -8,9 +8,6 @@ import java.util.Date;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
-@RequiredArgsConstructor
 @Validated
 public abstract class AnimalDto {
 
