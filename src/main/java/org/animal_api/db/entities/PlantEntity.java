@@ -2,16 +2,14 @@ package org.animal_api.db.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import org.animal_api.services.service.interfaces.Consumable;
 
 import java.util.Date;
 
 @Data
 @MappedSuperclass
-public abstract class PlantEntity {
+public abstract class PlantEntity extends BaseEntity implements Consumable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "creating_date", nullable = false, updatable = false)

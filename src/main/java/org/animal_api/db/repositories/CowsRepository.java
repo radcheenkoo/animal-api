@@ -5,4 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface CowsRepository extends JpaRepository<Long, CowsEntity> {}
+public interface CowsRepository extends JpaRepository<CowsEntity, Long> {
+
+    CowsEntity getByName(String name);
+
+}

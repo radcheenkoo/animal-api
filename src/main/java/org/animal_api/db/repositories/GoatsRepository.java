@@ -6,5 +6,8 @@ import org.springframework.stereotype.Repository;
 
 
 @Repository
-public interface GoatsRepository extends JpaRepository<Long, GoatsEntity> {
+public interface GoatsRepository extends JpaRepository<GoatsEntity, Long> {
+
+    GoatsEntity getByName(String name);
+
 }

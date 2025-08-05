@@ -4,16 +4,14 @@ package org.animal_api.db.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 import org.animal_api.interfaces.IFood;
+import org.animal_api.services.service.interfaces.Consumable;
 
 import java.util.Date;
 
 @Data
 @MappedSuperclass
-public abstract class AnimalEntity {
+public abstract class AnimalEntity extends BaseEntity implements Consumable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    protected Long id;
 
     @Column(name = "name", nullable = false, unique = true, length = 100)
     protected String name;
