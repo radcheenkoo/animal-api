@@ -1,11 +1,14 @@
-package org.animal_api.services.service;
+package org.animal_api.db.services.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.animal_api.db.entities.BaseEntity;
-import org.animal_api.services.exceptions.EntityIsNullException;
-import org.animal_api.services.exceptions.EntityNotFoundException;
+import org.animal_api.db.repositories.AdvancedRepository;
+import org.animal_api.utils.exceptions.AnimalNameIsNullException;
+import org.animal_api.utils.exceptions.EntityIsNullException;
+import org.animal_api.utils.exceptions.EntityNotFoundException;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -16,6 +19,7 @@ public abstract class BaseCRUDService<E extends BaseEntity, R extends JpaReposit
     protected BaseCRUDService(R repository){
         this.repository = repository;
     }
+
 
     public E create(E e) {
         if (Objects.isNull(e)){
@@ -66,7 +70,10 @@ public abstract class BaseCRUDService<E extends BaseEntity, R extends JpaReposit
         repository.deleteById(id);
         log.info("Updating entity with ID: {}", id);
 
+    }
 
+    public List<E> getAll(){
+        return repository.findAll();
     }
 
 }

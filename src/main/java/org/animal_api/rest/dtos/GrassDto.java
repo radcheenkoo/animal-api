@@ -1,9 +1,11 @@
 package org.animal_api.rest.dtos;
 
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 
-
-@Data
+@Getter
+@Setter
 public class GrassDto extends PlantDto {
 
     private CowsDto cow;

@@ -4,9 +4,10 @@ import lombok.Getter;
 import lombok.Setter;
 
 
+@Getter
+@Setter
 public class CowsDto extends AnimalDto {
-    @Getter
-    @Setter
+
     private LionsDto lion;
 
 }

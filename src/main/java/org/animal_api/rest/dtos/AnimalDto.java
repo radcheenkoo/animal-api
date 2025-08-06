@@ -3,6 +3,8 @@ package org.animal_api.rest.dtos;
 
 import lombok.*;
 import org.springframework.validation.annotation.Validated;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -12,6 +14,6 @@ import java.util.Date;
 public abstract class AnimalDto extends BaseDto {
 
     protected String name;
-    protected Date lastModificationDate;
+    protected LocalDateTime lastModificationDate;
 
 }

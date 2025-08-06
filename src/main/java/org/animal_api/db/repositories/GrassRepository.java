@@ -5,5 +5,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface GrassRepository extends JpaRepository<GrassEntity, Long> {
+public interface GrassRepository extends JpaRepository<GrassEntity, Long>, AdvancedRepository<GrassEntity> {
 }

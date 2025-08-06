@@ -1,25 +1,24 @@
-package org.animal_api.services.mapper;
+package org.animal_api.utils.mapper;
 
-import org.animal_api.db.entities.GoatsEntity;
-import org.animal_api.rest.dtos.GoatsDto;
+import org.animal_api.db.entities.LionsEntity;
+import org.animal_api.rest.dtos.LionsDto;
 import org.mapstruct.Mapper;
 
+
 @Mapper(componentModel = "spring")
-public interface GoatsMapper extends BaseMapper<GoatsEntity, GoatsDto>{
+public interface LionsMapper extends BaseMapper<LionsEntity, LionsDto> {
 
 //    @Mapping(source = "id", target = "id")
 //    @Mapping(source = "name", target = "name")
 //    @Mapping(source = "creatingDate", target = "creatingDate")
 //    @Mapping(source = "lastModificationDate", target = "lastModificationDate")
-//    @Mapping(source = "lion", target = "lion")
     @Override
-    GoatsEntity dtoToEntity(GoatsDto dto);
+    LionsDto entityToDto(LionsEntity entity);
 
 //    @Mapping(source = "id", target = "id")
 //    @Mapping(source = "name", target = "name")
 //    @Mapping(source = "creatingDate", target = "creatingDate")
 //    @Mapping(source = "lastModificationDate", target = "lastModificationDate")
-//    @Mapping(source = "lion", target = "lion")
     @Override
-    GoatsDto entityToDto(GoatsEntity entity);
+    LionsEntity dtoToEntity(LionsDto dto);
 }

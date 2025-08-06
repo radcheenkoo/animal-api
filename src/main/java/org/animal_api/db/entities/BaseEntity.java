@@ -3,6 +3,7 @@ package org.animal_api.db.entities;
 import jakarta.persistence.*;
 import lombok.Data;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -15,6 +16,6 @@ public abstract class BaseEntity {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "creating_date", nullable = false, updatable = false)
-    protected Date creatingDate;
+    protected LocalDateTime creatingDate;
 
 }

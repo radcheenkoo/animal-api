@@ -3,14 +3,12 @@ package org.animal_api.db.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import org.animal_api.interfaces.IFood;
-import org.animal_api.services.service.interfaces.Consumable;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 @Data
 @MappedSuperclass
-public abstract class AnimalEntity extends BaseEntity implements Consumable {
+public abstract class AnimalEntity extends BaseEntity {
 
 
     @Column(name = "name", nullable = false, unique = true, length = 100)
@@ -19,16 +17,13 @@ public abstract class AnimalEntity extends BaseEntity implements Consumable {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_modification_date", nullable = false)
-    protected Date lastModificationDate;
+    protected LocalDateTime lastModificationDate;
 
-    public AnimalEntity(String name, Date lastModificationDate) {
+    public AnimalEntity(String name, LocalDateTime lastModificationDate) {
         this.name = name;
         this.lastModificationDate = lastModificationDate;
     }
 
     public AnimalEntity() {
     }
-
-    public abstract void eatInternal(IFood food);
-
 }

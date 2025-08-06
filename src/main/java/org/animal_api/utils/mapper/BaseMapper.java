@@ -1,4 +1,4 @@
-package org.animal_api.services.mapper;
+package org.animal_api.utils.mapper;
 
 import org.animal_api.db.entities.BaseEntity;
 import org.animal_api.rest.dtos.BaseDto;
