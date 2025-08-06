@@ -16,17 +16,13 @@ public abstract class AnimalEntity extends BaseEntity implements Consumable {
     @Column(name = "name", nullable = false, unique = true, length = 100)
     protected String name;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "creating_date", nullable = false, updatable = false)
-    protected Date creatingDate;
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "last_modification_date", nullable = false)
     protected Date lastModificationDate;
 
-    public AnimalEntity(String name, Date creatingDate, Date lastModificationDate) {
+    public AnimalEntity(String name, Date lastModificationDate) {
         this.name = name;
-        this.creatingDate = creatingDate;
         this.lastModificationDate = lastModificationDate;
     }
 

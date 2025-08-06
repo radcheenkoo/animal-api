@@ -2,12 +2,11 @@ package org.animal_api.services.mapper;
 
 
 import org.animal_api.db.entities.GrassEntity;
-import org.animal_api.services.dtos.GrassDto;
+import org.animal_api.rest.dtos.GrassDto;
 import org.mapstruct.Mapper;
-import org.mapstruct.Mapping;
 
 @Mapper(componentModel = "spring")
-public interface GrassMapper extends PlantMapper<GrassEntity, GrassDto> {
+public interface GrassMapper extends BaseMapper<GrassEntity, GrassDto> {
 
 
 //    @Mapping(source = "id", target = "id")

@@ -22,7 +22,7 @@ public class GoatsEntity extends AnimalEntity implements IFood {
     }
 
     public GoatsEntity(String name, Date creatingDate, Date lastModifictionDate){
-        super(name, creatingDate, lastModifictionDate);
+        super(name, lastModifictionDate);
     }
 
     @Override

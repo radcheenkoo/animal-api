@@ -18,7 +18,7 @@ public class LionsEntity extends AnimalEntity {
     }
 
     public LionsEntity(String name, Date creatingDate, Date lastModifictionDate){
-        super(name, creatingDate, lastModifictionDate);
+        super(name, lastModifictionDate);
     }
 
     @Override

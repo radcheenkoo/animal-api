@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Objects;
 
 @Slf4j
-public abstract class BaseCRUDService<T extends BaseEntity, R extends JpaRepository<T, Long>> {
+public abstract class BaseCRUDService<E extends BaseEntity, R extends JpaRepository<E, Long>> {
 
     protected final R repository;
 
@@ -17,32 +17,32 @@ public abstract class BaseCRUDService<T extends BaseEntity, R extends JpaReposit
         this.repository = repository;
     }
 
-    public T create(T t) {
-        if (Objects.isNull(t)){
-           throw new EntityIsNullException("Entity -> " + t + " is null, it cannot be saved.");
+    public E create(E e) {
+        if (Objects.isNull(e)){
+           throw new EntityIsNullException("Entity -> " + e + " is null, it cannot be saved.");
         }
-        log.info("creating entity: {}", t);
+        log.info("creating entity: {}", e);
 
-        return repository.save(t);
+        return repository.save(e);
     }
 
-    public T update(T t){
+    public E update(E e){
 
-        if (Objects.isNull(t)){
-            throw new EntityIsNullException("Entity by id " + t.getId() + " is null.");
+        if (e == null){
+            throw new EntityIsNullException("Entity is null.");
         }
 
-        Long id = t.getId();
+        Long id = e.getId();
         if (id == null || !repository.existsById(id)){
             throw new EntityNotFoundException("Cannot update: entity not found with ID " + id);
         }
         log.info("Updating entity with ID: {}", id);
 
-        return repository.save(t);
+        return repository.save(e);
     }
 
 
-    public T read(Long id){
+    public E read(Long id){
 
         if (Objects.isNull(id)){
             throw new IllegalArgumentException("ID cannot be null");
@@ -53,18 +53,17 @@ public abstract class BaseCRUDService<T extends BaseEntity, R extends JpaReposit
 
     }
 
-    public void delete(T t){
+    public void delete(Long id){
 
-        if (Objects.isNull(t)){
-            throw new EntityIsNullException("Entity by id " + t.getId() + " is null.");
+        if (id == null){
+            throw new EntityIsNullException("Id is null.");
         }
 
-        Long id = t.getId();
-        if (id == null || !repository.existsById(id)){
-            throw new EntityNotFoundException("Cannot update: entity not found with ID " + id);
+        if (!repository.existsById(id)){
+            throw new EntityNotFoundException("Cannot delete: entity not found with ID " + id);
         }
 
-        repository.delete(t);
+        repository.deleteById(id);
         log.info("Updating entity with ID: {}", id);
 
 

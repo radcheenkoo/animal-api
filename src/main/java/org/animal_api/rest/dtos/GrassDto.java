@@ -1,4 +1,4 @@
-package org.animal_api.services.dtos;
+package org.animal_api.rest.dtos;
 
 import lombok.Data;
 

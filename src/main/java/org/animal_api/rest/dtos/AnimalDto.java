@@ -1,4 +1,4 @@
-package org.animal_api.services.dtos;
+package org.animal_api.rest.dtos;
 
 
 import lombok.*;
@@ -9,11 +9,9 @@ import java.util.Date;
 @Getter
 @Setter
 @Validated
-public abstract class AnimalDto {
+public abstract class AnimalDto extends BaseDto {
 
-    protected Long id;
     protected String name;
-    protected Date creatingDate;
     protected Date lastModificationDate;
 
 }
