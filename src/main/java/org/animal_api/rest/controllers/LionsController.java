@@ -21,7 +21,7 @@ public class LionsController extends BaseController<LionsRepository, LionService
         super(mapper, service);
     }
 
-    @PostMapping("/create/{name}")
+    @PostMapping("/create")
     public ResponseEntity<LionsDto> createLion(@RequestBody @Valid LionsDto dto) {
         dto.setId(null);
         dto.setCreatingDate(LocalDateTime.now());

@@ -1,5 +1,6 @@
 package org.animal_api.rest.controllers;
 
+import jakarta.validation.Valid;
 import org.animal_api.db.entities.CowsEntity;
 import org.animal_api.db.repositories.CowsRepository;
 import org.animal_api.rest.dtos.CowsDto;
@@ -20,8 +21,8 @@ public class CowsController extends BaseController<CowsRepository, CowsService, 
         super(mapper, service);
     }
 
-    @PostMapping("/create/{name}")
-    public ResponseEntity<CowsDto> createCow(@PathVariable String name) {
+    @PostMapping("/create")
+    public ResponseEntity<CowsDto> createCow(@RequestBody @Valid String name) {
         CowsDto dto = new CowsDto();
         dto.setId(null);
         dto.setName(name);
