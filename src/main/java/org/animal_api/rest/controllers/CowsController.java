@@ -1,11 +1,11 @@
 package org.animal_api.rest.controllers;
 
-import jakarta.validation.Valid;
 import org.animal_api.db.entities.CowsEntity;
 import org.animal_api.db.repositories.CowsRepository;
 import org.animal_api.rest.dtos.CowsDto;
 import org.animal_api.utils.mapper.CowsMapper;
 import org.animal_api.db.services.service.impl.CowsService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -21,33 +21,33 @@ public class CowsController extends BaseController<CowsRepository, CowsService, 
     }
 
     @PostMapping("/create/{name}")
-    public CowsDto createCow(@PathVariable String name) {
-
+    public ResponseEntity<CowsDto> createCow(@PathVariable String name) {
         CowsDto dto = new CowsDto();
         dto.setId(null);
         dto.setName(name);
         dto.setCreatingDate(LocalDateTime.now());
-
+        dto.setLastModificationDate(LocalDateTime.now());
         return super.create(dto);
     }
 
-    @GetMapping("/list")
-    public List<CowsDto> getAllCows(){
+    @GetMapping("list")
+    public ResponseEntity<List<CowsDto>> getAllCows() {
         return super.getAll();
     }
 
-    @GetMapping("/{id}")
-    public CowsDto getCowById(@PathVariable  Long id){
+    @GetMapping("searchById/{id}")
+    public ResponseEntity<CowsDto> getCowById(@PathVariable Long id) {
         return super.getById(id);
     }
 
-    @GetMapping("/get/{name}")
-    public CowsDto getCowByName(@PathVariable  String name){
+    @GetMapping("/search/{name}")
+    public ResponseEntity<CowsDto> getCowByName(@PathVariable String name) {
         return super.getByName(name);
     }
 
-    @PutMapping("/feed/{name}")
-    public void feed(@PathVariable String name){
+    @PutMapping("/{name}/feed")
+    public ResponseEntity<Void> feed(@PathVariable String name) {
         service.grassEatBy(name);
+        return ResponseEntity.noContent().build();
     }
 }

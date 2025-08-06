@@ -6,7 +6,6 @@ import org.animal_api.db.entities.GrassEntity;
 import org.animal_api.db.repositories.GoatsRepository;
 import org.animal_api.db.repositories.GrassRepository;
 import org.animal_api.db.services.service.AdvancedCRUDService;
-import org.animal_api.db.services.service.BaseCRUDService;
 import org.animal_api.db.services.service.PlantEaterService;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +16,6 @@ import java.time.LocalDateTime;
 @Slf4j
 public class GoatService extends AdvancedCRUDService<GoatsEntity, GoatsRepository> implements PlantEaterService<GoatsEntity> {
 
-//    private final GoatsRepository goatsRepository;
     private final GrassRepository grassRepository;
 
     protected GoatService(GoatsRepository repository, GrassRepository grassRepository) {

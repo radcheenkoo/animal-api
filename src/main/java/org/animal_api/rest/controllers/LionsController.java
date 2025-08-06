@@ -7,6 +7,7 @@ import org.animal_api.rest.dtos.LionsDto;
 import org.animal_api.utils.enums.FoodType;
 import org.animal_api.utils.mapper.LionsMapper;
 import org.animal_api.db.services.service.impl.LionService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -21,40 +22,34 @@ public class LionsController extends BaseController<LionsRepository, LionService
     }
 
     @PostMapping("/create/{name}")
-    public LionsDto createLion(@PathVariable @Valid String name){
-
-        LionsDto dto = new LionsDto();
+    public ResponseEntity<LionsDto> createLion(@RequestBody @Valid LionsDto dto) {
         dto.setId(null);
-        dto.setName(name);
         dto.setCreatingDate(LocalDateTime.now());
         dto.setLastModificationDate(LocalDateTime.now());
-
         return super.create(dto);
     }
 
-    @GetMapping("/list")
-    public List<LionsDto> getAllLions(){
+    @GetMapping("list")
+    public ResponseEntity<List<LionsDto>> getAllLions() {
         return super.getAll();
     }
 
-    @GetMapping("/{id}")
-    public LionsDto getLionById(@PathVariable Long id){
+    @GetMapping("searchById/{id}")
+    public ResponseEntity<LionsDto> getLionById(@PathVariable Long id) {
         return super.getById(id);
     }
 
-    @GetMapping("/get/{name}")
-    public LionsDto getLionByName(@PathVariable String name){
+    @GetMapping("/search/{name}")
+    public ResponseEntity<LionsDto> getLionByName(@PathVariable String name) {
         return super.getByName(name);
     }
 
-    @PutMapping("/feed/{name}")
-    public void feed(@PathVariable String name,
-                         @RequestParam String foodName,
-                         @RequestParam @Valid FoodType foodType){
-
-
+    @PutMapping("/{name}/feed")
+    public ResponseEntity<Void> feed(@PathVariable String name,
+                                     @RequestParam String foodName,
+                                     @RequestParam @Valid FoodType foodType) {
         service.eat(name, foodName, foodType);
-
+        return ResponseEntity.noContent().build();
     }
 
 }

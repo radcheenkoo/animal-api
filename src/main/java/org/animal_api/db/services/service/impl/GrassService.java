@@ -1,11 +1,9 @@
 package org.animal_api.db.services.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
-import org.animal_api.db.entities.AnimalEntity;
 import org.animal_api.db.entities.GrassEntity;
 import org.animal_api.db.repositories.GrassRepository;
 import org.animal_api.db.services.service.BaseCRUDService;
-import org.animal_api.db.services.service.PlantEaterService;
 import org.springframework.stereotype.Service;
 
 

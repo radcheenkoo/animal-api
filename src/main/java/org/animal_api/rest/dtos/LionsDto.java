@@ -2,7 +2,6 @@ package org.animal_api.rest.dtos;
 
 import lombok.Getter;
 import lombok.Setter;
-import org.animal_api.db.entities.GoatsEntity;
 
 import java.util.ArrayList;
 import java.util.List;

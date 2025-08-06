@@ -2,8 +2,6 @@ package org.animal_api.db.services.service;
 
 import lombok.extern.slf4j.Slf4j;
 import org.animal_api.db.entities.BaseEntity;
-import org.animal_api.db.repositories.AdvancedRepository;
-import org.animal_api.utils.exceptions.AnimalNameIsNullException;
 import org.animal_api.utils.exceptions.EntityIsNullException;
 import org.animal_api.utils.exceptions.EntityNotFoundException;
 import org.springframework.data.jpa.repository.JpaRepository;
