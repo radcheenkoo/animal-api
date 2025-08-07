@@ -1,6 +1,5 @@
 package org.animal_api.rest.controllers;
 
-import org.animal_api.utils.enums.FoodType;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -14,35 +13,31 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-
 @SpringBootTest
 @ActiveProfiles("test")
 @AutoConfigureMockMvc
-public class LionControllerIntegrationTest {
+public class GoatsControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void createLion_thenGetLionName() throws Exception {
-        createAnimal("lions", "Simba");
+    public void createCow_thenGetName() throws Exception{
+
+        createAnimal("goats","Nessa");
+
     }
 
     @Test
-    public void lionEatsCow_thenGetStatusOK() throws Exception {
-        createAnimal("cows", "Milka");
-        feedLion("Simba", "Milka", FoodType.COW);
-    }
+    public void feedCow_thanStatusImUsed() throws  Exception{
+        String name = "Nessa";
 
-    @Test
-    public void lionEatsGoat_thenGetStatusOK() throws Exception {
-        createAnimal("goats", "Mila");
-        feedLion("Simba", "Mila", FoodType.GOAT);
-    }
+        mockMvc.perform(put("/goats/feed/%s".formatted(name))
+        ).andExpect(status().isImUsed());
 
+    }
 
     // helpers -------------***********-----------------
-
 
     private void createAnimal(String path, String name) throws Exception {
         String json = """
@@ -57,13 +52,5 @@ public class LionControllerIntegrationTest {
                 .andExpect(status().isCreated())
                 .andExpect(jsonPath("$.name").value(name));
     }
-
-    private void feedLion(String lionName, String foodName, FoodType foodType) throws Exception {
-        mockMvc.perform(put("/lions/feed/" + lionName)
-                        .param("foodName", foodName)
-                        .param("foodType", foodType.name()))
-                .andExpect(status().isOk());
-    }
-
 
 }

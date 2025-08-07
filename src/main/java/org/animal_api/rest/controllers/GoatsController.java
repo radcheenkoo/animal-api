@@ -6,6 +6,7 @@ import org.animal_api.db.repositories.GoatsRepository;
 import org.animal_api.rest.dtos.GoatsDto;
 import org.animal_api.utils.mapper.GoatsMapper;
 import org.animal_api.db.services.service.impl.GoatService;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,10 +23,8 @@ public class GoatsController extends BaseController<GoatsRepository, GoatService
     }
 
     @PostMapping("/create")
-    public ResponseEntity<GoatsDto> createByName(@RequestBody @Valid String name) {
-        GoatsDto dto = new GoatsDto();
+    public ResponseEntity<GoatsDto> createByName(@RequestBody @Valid GoatsDto dto) {
         dto.setId(null);
-        dto.setName(name);
         dto.setCreatingDate(LocalDateTime.now());
         dto.setLastModificationDate(LocalDateTime.now());
         return super.create(dto);
@@ -46,10 +45,10 @@ public class GoatsController extends BaseController<GoatsRepository, GoatService
         return super.getByName(name);
     }
 
-    @PutMapping("/{name}/feed")
+    @PutMapping("/feed/{name}")
     public ResponseEntity<Void> feed(@PathVariable String name) {
         service.grassEatBy(name);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.status(HttpStatus.IM_USED).build();
     }
 
 
